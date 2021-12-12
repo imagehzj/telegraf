@@ -4,11 +4,15 @@ LABEL maintainer="shoothzj@gmail.com"
 
 WORKDIR /opt/sh
 
+ENV TELEGRAF_HOME /opt/sh/telegraf
+
+ARG TARGETARCH
+
 ARG download=1.19.3_linux_amd64
 
-RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-$download.tar.gz && \
+RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.20.4_linux_$TARGETARCH.tar.gz && \
 mkdir /opt/sh/telegraf && \
-tar -xf telegraf-$download.tar.gz -C /opt/sh/telegraf --strip-components 2 && \
-rm -rf telegraf-$download.tar.gz
+tar -xf telegraf-1.20.4_linux_$TARGETARCH.tar.gz -C /opt/sh/telegraf --strip-components 2 && \
+rm -rf telegraf-1.20.4_linux_$TARGETARCH.tar.gz
 
 WORKDIR /opt/sh/telegraf
